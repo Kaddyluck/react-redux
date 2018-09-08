@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+  background-color: #222;
+  height: 100vh;
+}
+
+.App-header {
+  background-color: #222;
+  height: 100px;
+  padding: 20px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 10s linear;
+  height: 70px;
+}
+
+.Product-Form {
+  text-align: center;
+  width: 50%;
+}
+
+.Counter {
+  color: white;
+  margin: 10px;
+}
+
+.Counter-button {
+  width: 40px;
+  height: 40px;
+  margin: 15px;
+  background-color: rgb(52,73,94);
+  border: 0;
+  color: white;
+}
+
+.Logo-block {
+  text-align: center;
+}
+
+.Product-button {
+  background-color:rgba(0, 0, 0, 0);
+  border: 0;
+  margin: 10px;
+}
+
+.Product-logo {
+  height: 50px;
+}
+
+.Available-logos {
+  display: inline-block;
+  width: 50%;
+  background-color: rgb(52,73,94);
+}
+
+.Add-to-list-button {
+  width: 120px;
+  height: 40px;
+  margin: 20px;
+  background-color: rgb(52,73,94);
+  border: 0;
+  color: white;
+  font-size: 18px;
+}
+
+h1 {
+  color: white;
+}
+
+input {
+  font-size: 20px;
+  color: white;
+  size: 24;
+  width: 95%;
+  height: 40px;
+  background-color: rgb(52,73,94);
+  border: 0;
+  margin: 10px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
