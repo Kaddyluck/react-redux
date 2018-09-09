@@ -11,7 +11,6 @@ class ProductForm extends Component {
       productImage: shoppingCart,
       showMenu: false,
       logoArray: [apple, vegetables, fish, cupcake],
-      productsList: []
     }
   }
 
@@ -54,16 +53,14 @@ class ProductForm extends Component {
     })
   }
 
-  addProductInList = () => {
+  createProductItem = () => {
     let joinedProduct = {
       name: this.state.productName,
       price: this.state.productPrice,
       count: this.state.productQuantity,
       logo: this.state.productImage
     }
-    this.setState(prevState => ({
-      productsList: [...prevState.productsList, joinedProduct]
-    }))
+    this.props.addProduct(joinedProduct)
   }
 
   render() {
@@ -98,7 +95,7 @@ class ProductForm extends Component {
 
         <div>
           <button className="Add-to-list-button" disabled={
-            !this.state.productName && !this.state.productPrice} onClick={this.addProductInList}>
+            !this.state.productName && !this.state.productPrice} onClick={this.createProductItem}>
           Add to list
           </button>
         </div>
