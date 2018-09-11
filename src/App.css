@@ -1,11 +1,12 @@
 .App {
-  text-align: center;
-  background-color: #222;
+  background-color: rgb(24,24,24);
   height: 100vh;
+  overflow: hidden;
 }
 
 .App-header {
-  background-color: #222;
+  text-align: center;
+  background-color: rgb(24,24,24);
   height: 100px;
   padding: 20px;
 }
@@ -16,20 +17,20 @@
 }
 
 .Product-Form {
+  float: left;
   text-align: center;
   width: 50%;
 }
 
 .Counter {
   color: white;
-  margin: 10px;
 }
 
 .Counter-button {
+  margin: 10px;
   width: 40px;
   height: 40px;
-  margin: 15px;
-  background-color: rgb(52,73,94);
+  background-color: rgb(32,43,56);
   border: 0;
   color: white;
 }
@@ -57,6 +58,121 @@
 .Add-to-list-button {
   width: 120px;
   height: 40px;
+  margin: 15px;
+  background-color: rgb(52,73,94);
+  border: 0;
+  color: white;
+  font-size: 18px;
+}
+
+.Add-to-list-button[disabled]  {
+  width: 120px;
+  height: 40px;
+  margin: 20px;
+  background-color: rgb(52,73,94);
+  border: 0;
+  font-size: 18px;
+  color: gray;
+}
+
+.Product-List {
+  float: right;
+  text-align: center;
+  width: 50%;
+}
+
+.All-Items {
+  margin-top: 20px;
+}
+
+.Product-Item {
+  position: relative;
+  margin-bottom: 1px;
+  display: inline-block;
+  width: 95%;
+  background-color: rgb(52,73,94);
+}
+
+.Product-Item:hover {
+  position: relative;
+  margin-bottom: 1px;
+  display: inline-block;
+  width: 95%;
+  background-color: #222;
+}
+
+.Item-name-and-actions {
+  height: 20px;
+  margin: 10px;
+}
+
+.Item-name {
+  position: absolute;
+  height: 10%;
+  width: 95%;
+  color: white;
+  float: left;
+  align-items: center;
+}
+
+.Item-actions {
+  position: relative;
+  float: right;
+  height: 100%;
+  width: 10%;
+}
+
+.Delete-logo {
+  height: 20px;
+  width: 50%;
+}
+
+.Link-logo {
+  height: 20px;
+  width: 50%;
+}
+
+.Item-logo-section {
+  position: absolute;
+  top: 30%;
+  float: left;
+  width: 15%
+}
+
+.Item-logo {
+  height: 50px;
+}
+
+.Item-logo-and-counter {
+  color: white;
+}
+
+.Item-price {
+  margin: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.Total {
+  text-align: left;
+  color: white;
+  margin: 10px;
+}
+
+.Product-Preview {
+  float: right;
+  text-align: center;
+  width: 50%;
+}
+
+.Product-Preview-logo {
+  height: 100px;
+  margin: 20px;
+}
+
+.Product-Preview-home-button {
+  width: 120px;
+  height: 40px;
   margin: 20px;
   background-color: rgb(52,73,94);
   border: 0;
@@ -66,6 +182,16 @@
 
 h1 {
   color: white;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: gray;
+}
+
+h3 {
+  color: white;
+  margin: 10px;
 }
 
 input {

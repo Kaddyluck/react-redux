@@ -20,13 +20,13 @@ class ProductForm extends Component {
     });
   }
 
-  reduceProductsAmount = (event) => {
+  reduceProductsAmount = () => {
     if (this.state.productQuantity > 1) {
       this.setState({productQuantity: this.state.productQuantity - 1})
     }
   }
 
-  increaseProductsAmount = (event) => {
+  increaseProductsAmount = () => {
     this.setState({productQuantity: this.state.productQuantity + 1})
   }
 
@@ -61,6 +61,7 @@ class ProductForm extends Component {
       logo: this.state.productImage
     }
     this.props.addProduct(joinedProduct)
+    this.props.itemPrice(this.state.productPrice * this.state.productQuantity)
   }
 
   render() {
@@ -68,7 +69,7 @@ class ProductForm extends Component {
       <div className="Product-Form">
         <h1>Add product to your cart list</h1>
 
-        <div className="Product-name-and-price-input">
+        <div>
           <input type="text" name="productName" placeholder="Product name" onChange={this.changeProductProperty}/>
           <input type="number" name="productPrice" placeholder="Product price" onChange={this.changeProductProperty}/>
         </div>
@@ -95,7 +96,7 @@ class ProductForm extends Component {
 
         <div>
           <button className="Add-to-list-button" disabled={
-            !this.state.productName && !this.state.productPrice} onClick={this.createProductItem}>
+            !this.state.productName || !this.state.productPrice} onClick={this.createProductItem}>
           Add to list
           </button>
         </div>
