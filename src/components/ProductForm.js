@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-import { shoppingCart, apple, vegetables, cupcake, fish } from '../img/index.js'
+import { shoppingCart, apple, vegetables, cupcake, fish } from '../img/index'
 
 class ProductForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productName: '',
-      productPrice: 0,
-      productQuantity: 1,
-      productImage: shoppingCart,
-      showMenu: false,
-      logoArray: [apple, vegetables, fish, cupcake],
-    }
+  state = {
+    productName: '',
+    productPrice: 0,
+    productQuantity: 1,
+    productImage: shoppingCart,
+    showMenu: false,
+    logoArray: [apple, vegetables, fish, cupcake]
   }
 
-  changeProductProperty = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
+  changeProductProperty = event => this.setState({[event.target.name]: event.target.value})
 
   reduceProductsAmount = () => {
     if (this.state.productQuantity > 1) {
@@ -26,9 +19,7 @@ class ProductForm extends Component {
     }
   }
 
-  increaseProductsAmount = () => {
-    this.setState({productQuantity: this.state.productQuantity + 1})
-  }
+  increaseProductsAmount = () => this.setState({productQuantity: this.state.productQuantity + 1})
 
   showMenu = (event) => {
     event.preventDefault();
@@ -95,8 +86,11 @@ class ProductForm extends Component {
         </div>
 
         <div>
-          <button className="Add-to-list-button" disabled={
-            !this.state.productName || !this.state.productPrice} onClick={this.createProductItem}>
+          <button
+            className="Add-to-list-button"
+            disabled={!this.state.productName || !this.state.productPrice}
+            onClick={this.createProductItem}
+          >
           Add to list
           </button>
         </div>
