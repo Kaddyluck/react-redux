@@ -10,22 +10,18 @@ class App extends Component {
     totalPrice: 0
   }
 
-  addProductInList = joinedProduct => {
+  addProductInList = joinedProduct =>
     this.setState(prevState => ({ productsList: [...prevState.productsList, joinedProduct] }))
-  }
 
-  calcTotalPrice = itemPrice => {
-    this.setState(prevState => ({ totalPrice: prevState.totalPrice + itemPrice }))
-  }
+  calcTotalPrice = itemPrice => this.setState(prevState => ({ totalPrice: prevState.totalPrice + itemPrice }))
 
-  deleteItem = index => {
+  deleteItem = index =>
     this.setState(prevState => ({
       productsList: this.state.productsList.filter((_, i) => i !== index),
       totalPrice: prevState.totalPrice - this.state.productsList[index].price * this.state.productsList[index].count
     }))
-  }
 
-  reduceItem = index => {
+  reduceItem = index =>
     this.setState(prevState => {
       const updatedItem = {...prevState.productsList[index], count: prevState.productsList[index].count -= 1 }
       const updatedList = prevState.productsList;
@@ -35,9 +31,8 @@ class App extends Component {
         totalPrice: prevState.totalPrice - Number(this.state.productsList[index].price)
       }
     })
-  }
 
-  increaseItem = index => {
+  increaseItem = index =>
     this.setState(prevState => {
       const updatedItem = {...prevState.productsList[index], count: prevState.productsList[index].count += 1 }
       const updatedList = prevState.productsList;
@@ -47,9 +42,8 @@ class App extends Component {
         totalPrice: prevState.totalPrice + Number(this.state.productsList[index].price)
       }
     })
-  }
 
-  renderProductList = () => {return(
+  renderProductList = () =>
     <ProductList
       productsList={this.state.productsList}
       totalPrice={this.state.totalPrice}
@@ -57,7 +51,7 @@ class App extends Component {
       reduceItemHandler={this.reduceItem}
       increaseItemHandler={this.increaseItem}
     />
-  )}
+
 
   renderProductItem = ({ match }) =>
     <ProductItem productItem={this.state.productsList[match.params.id]} />

@@ -30,13 +30,11 @@ class ProductForm extends Component {
     });
   }
 
-  Logos = () => {return(
-    this.state.logoArray.map((item, i) =>
+  Logos = () => this.state.logoArray.map((item, i) =>
       <button className="Product-button" key={i}>
         <img src={item} className="Product-logo" name={item.toString()} onClick={this.setImage} alt={item.toString()}/>
       </button>
-    ))
-  }
+    )
 
   setImage = (event) => {
     event.preventDefault();

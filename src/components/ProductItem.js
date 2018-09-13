@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { trash, link } from '../img/index'
 import { Link } from 'react-router-dom'
 
-const ProductItem = props => {
-  return (
+const ProductItem = props => (
     <div className="Product-Preview">
       <h1>{props.productItem.name}</h1>
       <img src={props.productItem.logo} className="Product-Preview-logo" alt="Product logo"/>
@@ -15,6 +14,5 @@ const ProductItem = props => {
       </Link>
     </div>
   )
-}
 
 export default ProductItem;
