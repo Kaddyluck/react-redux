@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { trash, link } from '../img/index.js'
+import { trash, link } from '../img/index'
+import { Counter } from './Counter'
 import {
   BrowserRouter as Router,
   Route,
@@ -20,12 +21,13 @@ class ProductList extends Component {
 
   showProduct = (item, i) => {
     return(
-      <div className="Product-Item" key={item.name}>
+      <div className="Product-Item" key={i}>
 
         <div className="Item-name-and-actions">
           <div className="Item-name">
             {item.name}
           </div>
+
           <div className="Item-actions">
             <img src={trash} className="Delete-logo" onClick={this.deleteItem(i)}/>
             <Link to={`/product/${i}`}>
@@ -34,15 +36,16 @@ class ProductList extends Component {
           </div>
         </div>
 
-        <div className="Item-logo-and-counter">
-          <div className="Item-logo-section">
-            <img src={item.logo} className="Item-logo"/>
+        <div className="Product-logo-and-counter">
+          <div className="Product-logo-section">
+            <img src={item.logo} className="Product-logo"/>
           </div>
-          <div>
-            <button className="Counter-button" onClick={this.reduceProductsAmount(i)}>-</button>
-            {item.count}
-            <button className="Counter-button" onClick={this.increaseProductsAmount(i)}>+</button>
-          </div>
+
+          <Counter
+            onSub={this.reduceProductsAmount(i)}
+            onAdd={this.increaseProductsAmount(i)}
+            counterValue={item.count}
+          />
         </div>
 
         <div className="Item-price">

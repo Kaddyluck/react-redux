@@ -39,10 +39,14 @@
   text-align: center;
 }
 
-.Product-button {
+.Product-button, .Product-button:hover {
   background-color:rgba(0, 0, 0, 0);
   border: 0;
   margin: 10px;
+}
+
+.Product-button:hover {
+  background-color: rgb(24,24,24);
 }
 
 .Product-logo {
@@ -55,7 +59,7 @@
   background-color: rgb(52,73,94);
 }
 
-.Add-to-list-button {
+.Action-button, .Action-button[disabled]{
   width: 120px;
   height: 40px;
   margin: 15px;
@@ -65,13 +69,7 @@
   font-size: 18px;
 }
 
-.Add-to-list-button[disabled]  {
-  width: 120px;
-  height: 40px;
-  margin: 15px;
-  background-color: rgb(52,73,94);
-  border: 0;
-  font-size: 18px;
+.Action-button[disabled]  {
   color: gray;
 }
 
@@ -85,7 +83,7 @@
   margin-top: 20px;
 }
 
-.Product-Item {
+.Product-Item, .Product-Item:hover {
   position: relative;
   margin-bottom: 1px;
   display: inline-block;
@@ -94,10 +92,6 @@
 }
 
 .Product-Item:hover {
-  position: relative;
-  margin-bottom: 1px;
-  display: inline-block;
-  width: 95%;
   background-color: #222;
 }
 
@@ -107,16 +101,16 @@
 }
 
 .Item-name {
-  position: absolute;
+  width: 100%;
   height: 10%;
-  width: 95%;
+  text-align: center;
   color: white;
   float: left;
   align-items: center;
 }
 
 .Item-actions {
-  position: relative;
+  width: 25%;
   float: right;
   height: 100%;
   width: 10%;
@@ -132,18 +126,14 @@
   width: 50%;
 }
 
-.Item-logo-section {
+.Product-logo-section {
   position: absolute;
   top: 30%;
   float: left;
   width: 15%
 }
 
-.Item-logo {
-  height: 50px;
-}
-
-.Item-logo-and-counter {
+.Product-logo-and-counter {
   color: white;
 }
 
@@ -168,16 +158,6 @@
 .Product-Preview-logo {
   height: 100px;
   margin: 20px;
-}
-
-.Product-Preview-home-button {
-  width: 120px;
-  height: 40px;
-  margin: 20px;
-  background-color: rgb(52,73,94);
-  border: 0;
-  color: white;
-  font-size: 18px;
 }
 
 h1 {

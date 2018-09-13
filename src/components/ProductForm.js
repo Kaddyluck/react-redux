@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FormInput } from './FormInput'
+import { Counter } from './Counter'
 import { shoppingCart, apple, vegetables, cupcake, fish } from '../img/index'
 
 class ProductForm extends Component {
@@ -60,16 +62,14 @@ class ProductForm extends Component {
       <div className="Product-Form">
         <h1>Add product to your cart list</h1>
 
-        <div>
-          <input type="text" name="productName" placeholder="Product name" onChange={this.changeProductProperty}/>
-          <input type="number" name="productPrice" placeholder="Product price" onChange={this.changeProductProperty}/>
-        </div>
+        <FormInput type="text" name="productName" placeholder="Product name" onChange={this.changeProductProperty} />
+        <FormInput type="number" name="productPrice" placeholder="Product price" onChange={this.changeProductProperty} />
 
-        <div className="Counter">
-          <button className="Counter-button" onClick={this.reduceProductsAmount}>-</button>
-          {this.state.productQuantity}
-          <button className="Counter-button" onClick={this.increaseProductsAmount}>+</button>
-        </div>
+        <Counter
+          onSub={this.reduceProductsAmount}
+          onAdd={this.increaseProductsAmount}
+          counterValue={this.state.productQuantity}
+        />
 
         <div className="Logo-block">
           <div>
@@ -87,13 +87,14 @@ class ProductForm extends Component {
 
         <div>
           <button
-            className="Add-to-list-button"
+            className="Action-button"
             disabled={!this.state.productName || !this.state.productPrice}
             onClick={this.createProductItem}
           >
           Add to list
           </button>
         </div>
+
       </div>
     )
   }

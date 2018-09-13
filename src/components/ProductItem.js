@@ -11,7 +11,7 @@ const ProductItem = props => {
       <h3>Price: {props.productItem.price} $</h3>
       <h3>Total: {props.productItem.price * props.productItem.count} $</h3>
       <Link to='/'>
-        <button className="Product-Preview-home-button">Back to list</button>
+        <button className="Action-button">Back to list</button>
       </Link>
     </div>
   )
