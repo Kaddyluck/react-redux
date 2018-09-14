@@ -21,7 +21,7 @@ class App extends Component {
       totalPrice: prevState.totalPrice - this.state.productsList[index].price * this.state.productsList[index].count
     }))
 
-  reduceItem = index =>
+  reduceItemCount = index =>
     this.setState(prevState => {
       const updatedItem = {...prevState.productsList[index], count: prevState.productsList[index].count -= 1 }
       const updatedList = prevState.productsList;
@@ -32,7 +32,7 @@ class App extends Component {
       }
     })
 
-  increaseItem = index =>
+  increaseItemCount = index =>
     this.setState(prevState => {
       const updatedItem = {...prevState.productsList[index], count: prevState.productsList[index].count += 1 }
       const updatedList = prevState.productsList;
