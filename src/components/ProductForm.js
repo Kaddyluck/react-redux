@@ -1,34 +1,27 @@
 import React, { Component } from 'react';
-import { shoppingCart, apple, vegetables, cupcake, fish } from '../img/index.js'
+import { FormInput } from './FormInput'
+import { Counter } from './Counter'
+import { shoppingCart, apple, vegetables, cupcake, fish } from '../img/index'
 
 class ProductForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productName: '',
-      productPrice: 0,
-      productQuantity: 1,
-      productImage: shoppingCart,
-      showMenu: false,
-      logoArray: [apple, vegetables, fish, cupcake],
-    }
+  state = {
+    productName: '',
+    productPrice: '',
+    productQuantity: 1,
+    productImage: shoppingCart,
+    showMenu: false,
+    logoArray: [apple, vegetables, fish, cupcake]
   }
 
-  changeProductProperty = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
+  changeProductProperty = event => this.setState({[event.target.name]: event.target.value})
 
-  reduceProductsAmount = (event) => {
+  reduceProductsAmount = () => {
     if (this.state.productQuantity > 1) {
       this.setState({productQuantity: this.state.productQuantity - 1})
     }
   }
 
-  increaseProductsAmount = (event) => {
-    this.setState({productQuantity: this.state.productQuantity + 1})
-  }
+  increaseProductsAmount = () => this.setState({productQuantity: this.state.productQuantity + 1})
 
   showMenu = (event) => {
     event.preventDefault();
@@ -37,13 +30,11 @@ class ProductForm extends Component {
     });
   }
 
-  Logos = () => {return(
-    this.state.logoArray.map((item, i) =>
+  Logos = () => this.state.logoArray.map((item, i) =>
       <button className="Product-button" key={i}>
         <img src={item} className="Product-logo" name={item.toString()} onClick={this.setImage} alt={item.toString()}/>
       </button>
-    ))
-  }
+    )
 
   setImage = (event) => {
     event.preventDefault();
@@ -60,7 +51,14 @@ class ProductForm extends Component {
       count: this.state.productQuantity,
       logo: this.state.productImage
     }
+    this.setState({
+      productName: '',
+      productPrice: '',
+      productQuantity: 1,
+      productImage: shoppingCart
+    })
     this.props.addProduct(joinedProduct)
+    this.props.itemPrice(this.state.productPrice * this.state.productQuantity)
   }
 
   render() {
@@ -68,16 +66,14 @@ class ProductForm extends Component {
       <div className="Product-Form">
         <h1>Add product to your cart list</h1>
 
-        <div className="Product-name-and-price-input">
-          <input type="text" name="productName" placeholder="Product name" onChange={this.changeProductProperty}/>
-          <input type="number" name="productPrice" placeholder="Product price" onChange={this.changeProductProperty}/>
-        </div>
+        <FormInput type="text" name="productName" value={this.state.productName} placeholder="Product name" onChange={this.changeProductProperty} />
+        <FormInput type="number" name="productPrice" value={this.state.productPrice} placeholder="Product price" onChange={this.changeProductProperty} />
 
-        <div className="Counter">
-          <button className="Counter-button" onClick={this.reduceProductsAmount}>-</button>
-          {this.state.productQuantity}
-          <button className="Counter-button" onClick={this.increaseProductsAmount}>+</button>
-        </div>
+        <Counter
+          onSub={this.reduceProductsAmount}
+          onAdd={this.increaseProductsAmount}
+          counterValue={this.state.productQuantity}
+        />
 
         <div className="Logo-block">
           <div>
@@ -94,11 +90,15 @@ class ProductForm extends Component {
         </div>
 
         <div>
-          <button className="Add-to-list-button" disabled={
-            !this.state.productName && !this.state.productPrice} onClick={this.createProductItem}>
+          <button
+            className="Action-button"
+            disabled={!this.state.productName || !this.state.productPrice}
+            onClick={this.createProductItem}
+          >
           Add to list
           </button>
         </div>
+
       </div>
     )
   }
