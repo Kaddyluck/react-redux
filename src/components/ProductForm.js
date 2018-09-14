@@ -6,7 +6,7 @@ import { shoppingCart, apple, vegetables, cupcake, fish } from '../img/index'
 class ProductForm extends Component {
   state = {
     productName: '',
-    productPrice: 0,
+    productPrice: '',
     productQuantity: 1,
     productImage: shoppingCart,
     showMenu: false,
@@ -51,6 +51,12 @@ class ProductForm extends Component {
       count: this.state.productQuantity,
       logo: this.state.productImage
     }
+    this.setState({
+      productName: '',
+      productPrice: '',
+      productQuantity: 1,
+      productImage: shoppingCart
+    })
     this.props.addProduct(joinedProduct)
     this.props.itemPrice(this.state.productPrice * this.state.productQuantity)
   }
@@ -60,8 +66,8 @@ class ProductForm extends Component {
       <div className="Product-Form">
         <h1>Add product to your cart list</h1>
 
-        <FormInput type="text" name="productName" placeholder="Product name" onChange={this.changeProductProperty} />
-        <FormInput type="number" name="productPrice" placeholder="Product price" onChange={this.changeProductProperty} />
+        <FormInput type="text" name="productName" value={this.state.productName} placeholder="Product name" onChange={this.changeProductProperty} />
+        <FormInput type="number" name="productPrice" value={this.state.productPrice} placeholder="Product price" onChange={this.changeProductProperty} />
 
         <Counter
           onSub={this.reduceProductsAmount}
