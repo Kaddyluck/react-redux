@@ -48,8 +48,8 @@ class App extends Component {
       productsList={this.state.productsList}
       totalPrice={this.state.totalPrice}
       deleteItemHandler={this.deleteItem}
-      reduceItemHandler={this.reduceItem}
-      increaseItemHandler={this.increaseItem}
+      reduceItemHandler={this.reduceItemCount}
+      increaseItemHandler={this.increaseItemCount}
     />
 
 
